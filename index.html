@@ -11,50 +11,51 @@
 <style>
 :root{
   --bg:#f2f4fb; --card:#ffffff; --ink:#0a0f23; --muted:#4a5270; --line:#d9deee;
-  --accent:#3a4bf0; --on-accent:#ffffff; --hi:#ffb547; --me:#e7ebff;
+  --accent:#3a4bf0; --on-accent:#ffffff; --hi:#ffb547; --me:#e7ebff; --ok:#177a48; --okbg:#e3f5ea; --pend:#fff1d9;
+  --sp:clamp(1rem,4vw,1.5rem);
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#0a0f23;--card:#121a3a;--ink:#eef1ff;--muted:#a9b2d4;--line:#26305c;--accent:#7b88ff;--on-accent:#0a0f23;--me:#1b2652}
+  :root:not([data-theme="light"]){--bg:#0a0f23;--card:#121a3a;--ink:#eef1ff;--muted:#a9b2d4;--line:#26305c;--accent:#7b88ff;--on-accent:#0a0f23;--me:#1b2652;--ok:#6fdc9b;--okbg:#10301f;--pend:#3a2d10}
 }
-:root[data-theme="dark"]{--bg:#0a0f23;--card:#121a3a;--ink:#eef1ff;--muted:#a9b2d4;--line:#26305c;--accent:#7b88ff;--on-accent:#0a0f23;--me:#1b2652}
+:root[data-theme="dark"]{--bg:#0a0f23;--card:#121a3a;--ink:#eef1ff;--muted:#a9b2d4;--line:#26305c;--accent:#7b88ff;--on-accent:#0a0f23;--me:#1b2652;--ok:#6fdc9b;--okbg:#10301f;--pend:#3a2d10}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1.06rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 clamp(1rem,.95rem + .3vw,1.12rem)/1.6 "Atkinson Hyperlegible",system-ui,sans-serif;padding-bottom:4.5rem}
 h1,h2,h3,.logo{font-family:Sora,system-ui,sans-serif;letter-spacing:-.01em}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--hi);outline-offset:3px}
-.wrap{max-width:900px;margin:0 auto;padding:0 1.25rem}
+.wrap{max-width:900px;margin:0 auto;padding:0 var(--sp)}
 header{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
-.logo{font-weight:800;font-size:1.4rem;text-decoration:none}
+.logo{font-weight:800;font-size:clamp(1.25rem,1.1rem + .6vw,1.5rem);text-decoration:none}
 .logo b{color:var(--accent)}
-.btn{display:inline-block;border:2px solid var(--accent);background:var(--accent);color:var(--on-accent);font:700 1rem "Atkinson Hyperlegible",sans-serif;padding:.75rem 1.25rem;border-radius:10px;text-decoration:none;cursor:pointer}
+.btn{display:inline-block;border:2px solid var(--accent);background:var(--accent);color:var(--on-accent);font:700 1rem "Atkinson Hyperlegible",sans-serif;padding:.75rem 1.25rem;border-radius:10px;text-decoration:none;cursor:pointer;text-align:center}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn:hover{filter:brightness(1.1)}
-.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
 
-.hero{padding:2.5rem 0 2rem;display:grid;gap:2rem;align-items:center}
+.hero{padding:clamp(1.5rem,5vw,2.5rem) 0 2rem;display:grid;gap:2rem;align-items:center}
 @media (min-width:760px){.hero{grid-template-columns:1.35fr .65fr}}
+h1{font-size:clamp(2.1rem,7.5vw,3.8rem);line-height:1.08;font-weight:800;margin:0 0 1rem;max-width:16ch}
+.sub{font-size:clamp(1.05rem,1rem + .4vw,1.2rem);color:var(--muted);max-width:44ch;margin:0 0 1.5rem}
+.row{display:flex;flex-wrap:wrap;gap:.75rem}
 .goal{width:min(100%,260px);justify-self:center}
 .goal .r{fill:none;stroke:var(--accent);stroke-width:12;stroke-linecap:round;stroke-dasharray:var(--c);stroke-dashoffset:var(--c);animation:draw 1.3s cubic-bezier(.3,.7,.2,1) forwards}
-.goal .r2{stroke-width:12;opacity:.7;animation-delay:.35s}
+.goal .r2{opacity:.7;animation-delay:.35s}
 .goal .r3{opacity:.45;animation-delay:.7s}
 .goal .core{fill:var(--hi);transform-origin:120px 120px;animation:pop .5s 1.5s backwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes pop{from{transform:scale(0)}}
-h1{font-size:clamp(2.1rem,7.5vw,3.8rem);line-height:1.08;font-weight:800;margin:0 0 1rem;max-width:16ch}
-.sub{font-size:1.2rem;color:var(--muted);max-width:44ch;margin:0 0 1.5rem}
-.row{display:flex;flex-wrap:wrap;gap:.75rem}
 
 .jarvis{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem;margin:1rem 0 3rem}
-.jhead{display:flex;align-items:center;gap:.6rem;padding:.25rem .25rem .75rem;border-bottom:1px solid var(--line);margin-bottom:.75rem}
+.jhead{display:flex;align-items:center;gap:.6rem;padding:.25rem .25rem .75rem;border-bottom:1px solid var(--line);margin-bottom:.75rem;flex-wrap:wrap}
 .dot{width:.7rem;height:.7rem;border-radius:50%;background:#3fbf7a}
 .jhead strong{font-family:Sora,sans-serif}
 .jhead span{color:var(--muted);font-size:.9rem}
 #log{max-height:min(55vh,420px);overflow-y:auto;display:flex;flex-direction:column;gap:.6rem;padding:.25rem}
-.msg{max-width:85%;padding:.6rem .9rem;border-radius:14px;overflow-wrap:anywhere}
+.msg{max-width:88%;padding:.6rem .9rem;border-radius:14px;overflow-wrap:anywhere}
 .msg.bot{background:var(--bg);border:1px solid var(--line);align-self:flex-start;border-top-left-radius:4px}
 .msg.me{background:var(--me);align-self:flex-end;border-top-right-radius:4px}
 .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0 0}
@@ -67,11 +68,12 @@ form.in input{flex:1;min-width:0;font:inherit;color:var(--ink);background:var(--
 
 section.how{padding:0 0 3rem}
 h2{font-size:clamp(1.5rem,5vw,2.1rem);margin:0 0 1rem}
-.steps{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));list-style:none;margin:0;padding:0}
+.steps{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));list-style:none;margin:0;padding:0}
 .steps li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem}
 .steps h3{margin:0 0 .3rem;font-size:1.1rem}
 .steps p{margin:0;color:var(--muted)}
-.ex{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem}
+
+.ex{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem}
 .mock{background:#3b2418;color:#f6ebdd;border-radius:12px;padding:1.5rem 1.25rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;gap:.5rem}
 .mock small{letter-spacing:.12em;font-size:.72rem;color:#c98b4b}
 .mock strong{font:700 1.7rem/1.1 Georgia,serif}
@@ -81,6 +83,29 @@ h2{font-size:clamp(1.5rem,5vw,2.1rem);margin:0 0 1rem}
 .ex h3{margin:0 0 .4rem;font-size:1.2rem}
 .ex p{margin:0;color:var(--muted)}
 footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--muted);font-size:.95rem}
+
+/* Admin */
+.fab{position:fixed;right:max(1rem,env(safe-area-inset-right,0px));bottom:max(1rem,env(safe-area-inset-bottom,0px));z-index:20;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:.7rem 1.1rem;font:700 .95rem "Atkinson Hyperlegible",sans-serif;cursor:pointer;box-shadow:0 4px 16px #0006}
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink);padding:0;width:min(94vw,640px);max-height:88vh}
+dialog::backdrop{background:#0a0f23b3}
+.dlg{padding:1.25rem;display:flex;flex-direction:column;gap:.9rem}
+.dlg h2{margin:0;font-size:1.35rem}
+.dlg label{font-weight:700;display:block;margin-bottom:.3rem}
+.dlg input[type=password]{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:.7rem .9rem}
+.err{color:#c0262d;min-height:1.4em;margin:0;font-weight:700}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#ff8a8f}}
+.pbody{overflow-y:auto;max-height:62vh;display:flex;flex-direction:column;gap:.8rem}
+.pc{border:1px solid var(--line);border-left:6px solid var(--hi);background:var(--pend);border-radius:12px;padding:.9rem;display:flex;flex-direction:column;gap:.35rem}
+.pc.done{border-left-color:var(--ok);background:var(--okbg)}
+.pc h3{margin:0;font-size:1.05rem}
+.pc dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.15rem .7rem}
+.pc dt{color:var(--muted)}
+.pc dd{margin:0;overflow-wrap:anywhere}
+.st{font-weight:700}
+.pc select{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:8px;padding:.35rem .5rem}
+.pa{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+.pa .btn{padding:.5rem .9rem;font-size:.95rem}
+.empty{color:var(--muted);text-align:center;padding:1.5rem 0}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.goal .r{animation:none;stroke-dashoffset:0}.goal .core{animation:none}}
 </style>
 </head>
@@ -134,10 +159,38 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--mute
   <footer>iMetas · El Salvador · <a href="https://wa.me/50370192142" target="_blank" rel="noopener">+503 7019 2142</a></footer>
 </div>
 
+<button class="fab" id="fab" type="button" aria-haspopup="dialog">⚙ Admin</button>
+
+<dialog id="dlgLogin" aria-labelledby="tLogin">
+  <form class="dlg" id="fLogin" method="dialog" novalidate>
+    <h2 id="tLogin">Acceso privado</h2>
+    <div><label for="pw">Contraseña</label><input id="pw" type="password" autocomplete="current-password" required></div>
+    <p class="err" id="err" role="alert"></p>
+    <div class="row"><button class="btn" type="submit">Entrar</button><button class="btn ghost" type="button" data-close>Cancelar</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlgPanel" aria-labelledby="tPanel">
+  <div class="dlg">
+    <h2 id="tPanel">Prospectos</h2>
+    <p class="sub" style="margin:0;font-size:.95rem">Se guardan en este navegador. Verifica a mano si cada negocio tiene web antes de afirmarlo.</p>
+    <div class="pbody" id="pbody"></div>
+    <div class="row"><button class="btn ghost" type="button" data-close>Cerrar</button></div>
+  </div>
+</dialog>
+
 <script>
 (function(){
+  var KEY="imetas_prospectos", WA="50370192142";
+  var HASH="79c1d32bdb8bacb6bc4ed6c7ce70e1f56b480126f41d4f9254fd0664fb3f2ae1";
+
+  /* ---------- almacenamiento local ---------- */
+  function load(){try{var v=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(v)?v:[]}catch(e){return []}}
+  function save(list){try{localStorage.setItem(KEY,JSON.stringify(list));return true}catch(e){return false}}
+
+  /* ---------- chat de Jarvis ---------- */
   var log=document.getElementById("log"), ctl=document.getElementById("ctl");
-  var WA="50370192142", data={}, i=0, busy=false;
+  var data={}, i=0, busy=false;
   var ideas={
     "Que no me encuentran en internet":"Una página con tu ubicación, horario, fotos y botón de WhatsApp, y tu ficha de Google bien completa.",
     "Pierdo tiempo contestando lo mismo":"Un asistente como yo en tu página que responda lo repetitivo y te deje solo los clientes en serio.",
@@ -146,31 +199,24 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--mute
   };
   var steps=[
     {k:"nombre",q:"Hola, soy Jarvis, el asistente virtual de iMetas. Sin rodeos: ¿cómo te llamas?",ph:"Tu nombre"},
-    {k:"negocio",q:function(){return "Gusto, "+data.nombre+". ¿Qué negocio o proyecto tienes?"},ph:"Ej: barbería, taller, tienda de ropa"},
+    {k:"negocio",q:function(){return "Gusto, "+data.nombre+". ¿Qué tipo de negocio tienes?"},ph:"Ej: barbería, taller, tienda de ropa"},
     {k:"problema",q:"¿Qué es lo que más te quita ventas o tiempo?",chips:Object.keys(ideas),ph:"O cuéntalo con tus palabras"},
-    {k:"canal",q:"¿Dónde te encuentran hoy tus clientes?",chips:["Instagram","Facebook","TikTok","WhatsApp","Solo de voz en voz"],ph:"O escribe otro"},
+    {k:"canal",q:"¿Por dónde te encuentran hoy tus clientes?",chips:["Instagram","Facebook","TikTok","WhatsApp","Solo de voz en voz"],ph:"O escribe otro"},
     {k:"contacto",q:"Último dato: ¿a qué número de WhatsApp te escribimos?",ph:"Tu número",tel:true}
   ];
-  function say(text,who,cls){
-    var d=document.createElement("div");d.className="msg "+who+(cls?" "+cls:"");d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;return d;
-  }
+  function say(text,who,cls){var d=document.createElement("div");d.className="msg "+who+(cls?" "+cls:"");d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
   function ask(){
     if(i>=steps.length){return finish()}
     var s=steps[i],q=typeof s.q==="function"?s.q():s.q;
     ctl.textContent="";busy=true;
     var t=say("Escribiendo…","bot","typing");
-    setTimeout(function(){
-      t.textContent=q;t.classList.remove("typing");busy=false;draw(s);
-    },450);
+    setTimeout(function(){t.textContent=q;t.classList.remove("typing");busy=false;draw(s)},450);
   }
   function draw(s){
     ctl.textContent="";
     if(s.chips){
       var c=document.createElement("div");c.className="chips";
-      s.chips.forEach(function(x){
-        var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=x;
-        b.onclick=function(){answer(x)};c.appendChild(b);
-      });
+      s.chips.forEach(function(x){var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=x;b.onclick=function(){answer(x)};c.appendChild(b)});
       ctl.appendChild(c);
     }
     var f=document.createElement("form");f.className="in";
@@ -182,20 +228,23 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--mute
     ctl.appendChild(f);
     if(!s.chips||i>0){inp.focus({preventScroll:true})}
   }
-  function answer(v){
-    if(busy)return;
-    data[steps[i].k]=v;say(v,"me");i++;ask();
-  }
+  function answer(v){if(busy)return;data[steps[i].k]=v;say(v,"me");i++;ask()}
   function finish(){
     ctl.textContent="";busy=true;
     var t=say("Escribiendo…","bot","typing");
     setTimeout(function(){
       t.textContent="Listo, "+data.nombre+". Con lo que me contaste, esto es lo que veo:";t.classList.remove("typing");
-      var idea=ideas[data.problema]||"Con lo que cuentas conviene platicarlo contigo para ver qué te sirve de verdad.";
-      say(idea,"bot");
+      say(ideas[data.problema]||"Con lo que cuentas conviene platicarlo contigo para ver qué te sirve de verdad.","bot");
       var resumen="Nombre: "+data.nombre+"\nNegocio: "+data.negocio+"\nProblema: "+data.problema+"\nMe encuentran por: "+data.canal+"\nWhatsApp: "+data.contacto;
       var s=document.createElement("div");s.className="sum";s.textContent=resumen;log.appendChild(s);
+
+      /* guardar prospecto localmente antes de abrir WhatsApp */
+      var lista=load();
+      lista.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),nombre:data.nombre,negocio:data.negocio,problema:data.problema,canal:data.canal,whatsapp:data.contacto,estado:"Pendiente",tieneWeb:"sin_verificar",fecha:new Date().toISOString()});
+      var ok=save(lista);
+      say(ok?"Guardé tu resumen en este navegador para que no se pierda.":"No pude guardar el resumen en este navegador, pero puedes enviarlo por WhatsApp.","bot");
       say("No te doy precios aquí porque dependen de lo que necesites. Envía este resumen y te respondemos con una propuesta clara, sin compromiso.","bot");
+
       var msg="Hola, vengo de iMetas. Hablé con Jarvis:\n"+resumen;
       var a=document.createElement("a");a.className="btn";a.target="_blank";a.rel="noopener";
       a.href="https://wa.me/"+WA+"?text="+encodeURIComponent(msg);a.textContent="Enviar mi resumen por WhatsApp";
@@ -205,6 +254,55 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--mute
       ctl.appendChild(row);log.scrollTop=log.scrollHeight;busy=false;
     },600);
   }
+
+  /* ---------- admin ---------- */
+  var dl=document.getElementById("dlgLogin"), dp=document.getElementById("dlgPanel");
+  var pw=document.getElementById("pw"), err=document.getElementById("err"), pbody=document.getElementById("pbody");
+  function open(d){if(typeof d.showModal==="function"){d.showModal()}else{d.setAttribute("open","")}}
+  function close(d){if(typeof d.close==="function"){d.close()}else{d.removeAttribute("open")}}
+  document.querySelectorAll("[data-close]").forEach(function(b){b.onclick=function(){close(b.closest("dialog"))}});
+  document.getElementById("fab").onclick=function(){pw.value="";err.textContent="";open(dl);setTimeout(function(){pw.focus()},50)};
+  function sha256(str){
+    if(!(window.crypto&&crypto.subtle))return Promise.reject(new Error("nocrypto"));
+    return crypto.subtle.digest("SHA-256",new TextEncoder().encode(str)).then(function(buf){
+      return Array.prototype.map.call(new Uint8Array(buf),function(b){return ("0"+b.toString(16)).slice(-2)}).join("");
+    });
+  }
+  document.getElementById("fLogin").onsubmit=function(e){
+    e.preventDefault();err.textContent="";
+    sha256(pw.value).then(function(h){
+      if(h===HASH){pw.value="";close(dl);render();open(dp)}
+      else{err.textContent="Contraseña incorrecta.";pw.select()}
+    }).catch(function(){err.textContent="Tu navegador no permite validar aquí. Abre la página con https."});
+  };
+  function fmt(iso){try{return new Date(iso).toLocaleString("es-SV",{dateStyle:"medium",timeStyle:"short"})}catch(e){return iso}}
+  function wa(num){var d=String(num||"").replace(/\D/g,"");if(d.length===8)d="503"+d;return d}
+  function row(dt,dd){var a=document.createElement("dt");a.textContent=dt;var b=document.createElement("dd");b.textContent=dd;return [a,b]}
+  function render(){
+    pbody.textContent="";
+    var lista=load().slice().sort(function(a,b){return a.fecha<b.fecha?1:-1});
+    if(!lista.length){var p=document.createElement("p");p.className="empty";p.textContent="Todavía no hay prospectos guardados en este navegador.";pbody.appendChild(p);return}
+    lista.forEach(function(p){
+      var c=document.createElement("article");c.className="pc"+(p.estado==="Contactado"?" done":"");
+      var h=document.createElement("h3");h.textContent=p.nombre;c.appendChild(h);
+      var d=document.createElement("dl");
+      [["Negocio",p.negocio],["Problema",p.problema],["Canal",p.canal],["WhatsApp",p.whatsapp],["Fecha",fmt(p.fecha)]].forEach(function(r){row(r[0],r[1]).forEach(function(n){d.appendChild(n)})});
+      var s1=document.createElement("dt");s1.textContent="Estado";var s2=document.createElement("dd");s2.className="st";s2.textContent=p.estado;d.appendChild(s1);d.appendChild(s2);
+      var w1=document.createElement("dt");w1.textContent="¿Tiene web? (verificar)";var w2=document.createElement("dd");
+      var sel=document.createElement("select");sel.setAttribute("aria-label","¿Tiene web? (verificar) de "+p.nombre);
+      [["sin_verificar","Sin verificar"],["si","Sí tiene web"],["no","No tiene web"]].forEach(function(o){var op=document.createElement("option");op.value=o[0];op.textContent=o[1];if((p.tieneWeb||"sin_verificar")===o[0])op.selected=true;sel.appendChild(op)});
+      sel.onchange=function(){update(p.id,{tieneWeb:sel.value})};
+      w2.appendChild(sel);d.appendChild(w1);d.appendChild(w2);c.appendChild(d);
+      var act=document.createElement("div");act.className="pa";
+      var bt=document.createElement("button");bt.type="button";bt.className="btn";
+      if(p.estado==="Contactado"){bt.textContent="Contactado ✓";bt.disabled=true}else{bt.textContent="Marcar como Contactado";bt.onclick=function(){update(p.id,{estado:"Contactado"});render()}}
+      act.appendChild(bt);
+      var n=wa(p.whatsapp);if(n){var l=document.createElement("a");l.className="btn ghost";l.target="_blank";l.rel="noopener";l.href="https://wa.me/"+n;l.textContent="Abrir WhatsApp";act.appendChild(l)}
+      c.appendChild(act);pbody.appendChild(c);
+    });
+  }
+  function update(id,patch){var l=load();l.forEach(function(x){if(x.id===id){for(var k in patch)x[k]=patch[k]}});save(l)}
+
   ask();
 })();
 </script>
